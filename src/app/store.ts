@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { orderReducer } from '../features/CollapsableTable/orderSlice';
+import logger from 'redux-logger';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    orders: orderReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export type AppDispatch = typeof store.dispatch;
